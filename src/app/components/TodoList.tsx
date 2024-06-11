@@ -1,4 +1,3 @@
-import DeleteIcon from "@mui/icons-material/Delete";
 import Checkbox from "@mui/material/Checkbox";
 import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
@@ -28,8 +27,15 @@ const TodoList: React.FC<TodoListProps> = ({ todos, onDelete, onToggle }) => {
             edge="end"
             aria-label="delete"
             onClick={() => onDelete(todo.id)}
+            sx={{
+              fontSize: 15,
+              ":hover": {
+                color: "inherit",
+                backgroundColor: "transparent",
+              },
+            }}
           >
-            <DeleteIcon />
+            delete
           </IconButton>
         </ListItem>
       ))}

@@ -1,4 +1,6 @@
 "use client";
+import { Box, Typography } from "@mui/material";
+import Container from "@mui/material/Container";
 import { Todo } from "@prisma/client";
 import { useEffect, useState } from "react";
 import TodoForm from "./components/TodoForm";
@@ -48,10 +50,25 @@ export default function Home() {
   };
 
   return (
-    <div>
-      <h1>Todo List</h1>
-      <TodoForm onSubmit={addTodo} />
-      <TodoList todos={todos} onDelete={deleteTodo} onToggle={toggleTodo} />
-    </div>
+    <Container sx={{ mt: 4, display: "flex", justifyContent: "center" }}>
+      <Box
+        sx={{
+          width: "100%",
+          maxWidth: 600,
+          display: "flex",
+          flexDirection: "column",
+          p: 2,
+          boxShadow: 3,
+          borderRadius: 2,
+          backgroundColor: "background.paper",
+        }}
+      >
+        <Typography variant="h4" component="h1" gutterBottom>
+          On today's do's
+        </Typography>
+        <TodoForm onSubmit={addTodo} />
+        <TodoList todos={todos} onDelete={deleteTodo} onToggle={toggleTodo} />
+      </Box>
+    </Container>
   );
 }

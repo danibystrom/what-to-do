@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import React, { useState } from "react";
@@ -17,17 +18,18 @@ const TodoForm: React.FC<TodoFormProps> = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <Box component="form" onSubmit={handleSubmit} sx={{ width: "100%" }}>
       <TextField
-        label="New Todo"
+        label="you gotta  ..."
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         fullWidth
+        sx={{ mb: 2 }}
       />
-      <Button type="submit" variant="contained" color="primary">
-        Add Todo
+      <Button type="submit" variant="contained" color="primary" fullWidth>
+        Add do
       </Button>
-    </form>
+    </Box>
   );
 };
 

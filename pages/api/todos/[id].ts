@@ -1,7 +1,5 @@
-import { PrismaClient } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
-
-const prisma = new PrismaClient();
+import { db } from "../../../prisma/db";
 
 export default async function handler(
   req: NextApiRequest,
@@ -9,19 +7,19 @@ export default async function handler(
 ) {
   const { id } = req.query;
   if (req.method === "GET") {
-    const todo = await prisma.todo.findUnique({
+    const todo = await db.todo.findUnique({
       where: { id: Number(id) },
     });
     res.status(200).json(todo);
   } else if (req.method === "PUT") {
     const { title, completed } = req.body;
-    const todo = await prisma.todo.update({
+    const todo = await db.todo.update({
       where: { id: Number(id) },
       data: { title, completed },
     });
     res.status(200).json(todo);
   } else if (req.method === "DELETE") {
-    await prisma.todo.delete({
+    await db.todo.delete({
       where: { id: Number(id) },
     });
     res.status(204).end();

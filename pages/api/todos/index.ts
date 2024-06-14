@@ -1,18 +1,16 @@
-import { PrismaClient } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
-
-const prisma = new PrismaClient();
+import { db } from "../../../prisma/db";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   if (req.method === "GET") {
-    const todos = await prisma.todo.findMany();
+    const todos = await db.todo.findMany();
     res.status(200).json(todos);
   } else if (req.method === "POST") {
     const { title } = req.body;
-    const todo = await prisma.todo.create({
+    const todo = await db.todo.create({
       data: {
         title,
       },

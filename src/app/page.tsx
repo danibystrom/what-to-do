@@ -8,6 +8,7 @@ import TodoList from "./components/TodoList";
 
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [editingTodo, setEditingTodo] = useState<Todo | null>(null);
 
   useEffect(() => {
     async function fetchTodos() {
@@ -49,6 +50,23 @@ export default function Home() {
     setTodos(todos.map((todo) => (todo.id === id ? updatedTodo : todo)));
   };
 
+  const updateTodo = async (id: number, title: string) => {
+    const response = await fetch(`/api/todos/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ title }),
+    });
+    const updatedTodo = await response.json();
+    setTodos(todos.map((todo) => (todo.id === id ? updatedTodo : todo)));
+    setEditingTodo(null);
+  };
+
+  const startEditing = (todo: Todo) => {
+    setEditingTodo(todo);
+  };
+
   return (
     <Container sx={{ mt: 4, display: "flex", justifyContent: "center" }}>
       <Box
@@ -66,8 +84,18 @@ export default function Home() {
         <Typography variant="h4" component="h1" gutterBottom>
           On today's do's
         </Typography>
-        <TodoForm onSubmit={addTodo} />
-        <TodoList todos={todos} onDelete={deleteTodo} onToggle={toggleTodo} />
+        <TodoForm
+          onSubmit={
+            editingTodo ? (title) => updateTodo(editingTodo.id, title) : addTodo
+          }
+          defaultTitle={editingTodo ? editingTodo.title : ""}
+        />
+        <TodoList
+          todos={todos}
+          onDelete={deleteTodo}
+          onToggle={toggleTodo}
+          onEdit={startEditing}
+        />
       </Box>
     </Container>
   );

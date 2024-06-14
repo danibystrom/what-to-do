@@ -1,18 +1,22 @@
 import { Box } from "@mui/material";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface TodoFormProps {
   onSubmit: (title: string) => void;
+  defaultTitle?: string;
 }
 
-const TodoForm: React.FC<TodoFormProps> = ({ onSubmit }) => {
-  const [title, setTitle] = useState("");
+const TodoForm: React.FC<TodoFormProps> = ({ onSubmit, defaultTitle = "" }) => {
+  const [title, setTitle] = useState(defaultTitle);
+
+  useEffect(() => {
+    setTitle(defaultTitle);
+  }, [defaultTitle]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!title.trim()) return;
     onSubmit(title);
     setTitle("");
   };
@@ -27,7 +31,7 @@ const TodoForm: React.FC<TodoFormProps> = ({ onSubmit }) => {
         sx={{ mb: 2 }}
       />
       <Button type="submit" variant="contained" color="primary" fullWidth>
-        Add do
+        {defaultTitle ? "Update do" : "Add do"}
       </Button>
     </Box>
   );

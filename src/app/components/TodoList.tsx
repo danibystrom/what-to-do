@@ -10,9 +10,15 @@ interface TodoListProps {
   todos: Todo[];
   onDelete: (id: number) => void;
   onToggle: (id: number, completed: boolean) => void;
+  onEdit: (todo: Todo) => void;
 }
 
-const TodoList: React.FC<TodoListProps> = ({ todos, onDelete, onToggle }) => {
+const TodoList: React.FC<TodoListProps> = ({
+  todos,
+  onDelete,
+  onToggle,
+  onEdit,
+}) => {
   return (
     <List>
       {todos.map((todo) => (
@@ -36,9 +42,10 @@ const TodoList: React.FC<TodoListProps> = ({ todos, onDelete, onToggle }) => {
             <IconButton
               edge="end"
               aria-label="edit"
+              onClick={() => onEdit(todo)}
               sx={{
                 fontSize: 15,
-                marginRight: 1, // Lägger till lite mellanrum mellan knapparna
+                marginRight: 1, 
                 ":hover": {
                   color: "inherit",
                   backgroundColor: "transparent",

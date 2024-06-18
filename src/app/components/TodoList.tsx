@@ -42,10 +42,11 @@ const TodoList: React.FC<TodoListProps> = ({
             <IconButton
               edge="end"
               aria-label="edit"
+              data-cy="edit-button"
               onClick={() => onEdit(todo)}
               sx={{
                 fontSize: 15,
-                marginRight: 1, 
+                marginRight: 1,
                 ":hover": {
                   color: "inherit",
                   backgroundColor: "transparent",
@@ -57,6 +58,7 @@ const TodoList: React.FC<TodoListProps> = ({
             <IconButton
               edge="end"
               aria-label="delete"
+              data-cy="delete-button"
               onClick={() => onDelete(todo.id)}
               sx={{
                 fontSize: 15,

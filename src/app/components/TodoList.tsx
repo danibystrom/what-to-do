@@ -35,6 +35,7 @@ const TodoList: React.FC<TodoListProps> = ({
               edge="start"
               checked={todo.completed}
               onChange={() => onToggle(todo.id, !todo.completed)}
+              inputProps={{ "data-cy": "todo-checkbox" } as React.InputHTMLAttributes<HTMLInputElement>}
             />
             <ListItemText primary={todo.title} />
           </Box>

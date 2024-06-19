@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Todo List Application
+
+This is a simple Todo List application where users can create, keep track of, check off, edit, and delete their daily "do's". The project is built using Next.js, TypeScript, Material-UI, Prisma, and Cypress for end-to-end testing.
+
+## Features
+
+- Add new todos
+- Mark todos as completed
+- Edit existing todos
+- Delete todos
+- Cypress tests to ensure functionality
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Material-UI](https://mui.com/)
+- [Prisma](https://www.prisma.io/)
+- [Cypress](https://www.cypress.io/)
 
 ## Getting Started
 
-First, run the development server:
+Follow these steps to get the project up and running on your local machine.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Installation and running the application
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Clone the repository:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+    ```
+    git clone https://github.com/yourusername/todo-list.git
+    cd todo-list
+    ```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+2. Install the dependencies:
 
-## Learn More
+    ```
+    npm install
+    ```
 
-To learn more about Next.js, take a look at the following resources:
+3. Start the development server
+    ```
+    npm run dev
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Run the Prisma migrations to set up your database schema:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+    ```
+    npx prisma studio
 
-## Deploy on Vercel
+### Contributors 💪🏼
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Daniela Byström [@danibystrom](https://github.com/danibystrom)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+
+

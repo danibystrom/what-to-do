@@ -17,7 +17,7 @@ describe("Todo Application", () => {
     cy.get("li").contains("New todo").should("be.visible");
   });
 
-  it("should mark a todo as done", () => {
+  it("should be able to mark a todo as done", () => {
     // Användaren ska kunna markera en todo som klar.
     const newTodo = "New Todo Item";
 
